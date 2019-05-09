@@ -61,10 +61,28 @@ class SnackbarComponent extends Component {
             this.setState({ hideDistance: event.nativeEvent.layout.height });
           }}
         >
-          <Text style={[styles.text_msg, { color: this.props.messageColor, paddingVertical: this.props.paddingVertical }]}>{this.props.textMessage}</Text>
+          <Text style={[
+            styles.text_msg, 
+            { 
+              color: this.props.messageColor,
+              paddingTop: this.props.paddingVertical, 
+              paddingBottom: this.props.paddingVertical + 3
+            }]}
+          >
+            {this.props.textMessage}
+          </Text>
           {this.props.actionHandler && this.props.actionText &&
             <Touchable onPress={() => { this.props.actionHandler(); }} >
-              <Text style={[styles.action_text, { color: this.props.accentColor, paddingVertical: this.props.paddingVertical}]}>{this.props.actionText.toUpperCase()}</Text>
+              <Text style={[
+                styles.action_text,
+                { 
+                  color: this.props.accentColor, 
+                  paddingTop: this.props.paddingVertical, 
+                  paddingBottom: this.props.paddingVertical + 3
+                }]}
+              >
+                {this.props.actionText.toUpperCase()}
+              </Text>
             </Touchable>
           }
         </Animated.View>
@@ -152,7 +170,7 @@ SnackbarComponent.propTypes = {
   bottom: PropTypes.number,
   position: PropTypes.string, // bottom (default), top
   autoHidingTime: PropTypes.number, // How long (in milliseconds) the snack bar will be hidden.
-  paddingVertical: Proptypes.number
+  paddingVertical: PropTypes.number
 };
 
 const styles = StyleSheet.create({
